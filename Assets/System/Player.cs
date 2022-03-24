@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     BoxCollider2D colider;
     RaycastHit2D rayHit;
     public ScriptManager scriptManager;
+    public GameObject savePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -73,8 +74,8 @@ public class Player : MonoBehaviour
     {
         if (anim.GetBool("Start") && !anim.GetBool("Die") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Character-Wake") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Character-Sleep"))
         {
-            float inputX = scriptManager.isAction ? 0 : Input.GetAxis("Horizontal");
-            float inputY = scriptManager.isAction ? 0 : Input.GetAxis("Vertical");
+            float inputX = scriptManager.isAction || savePanel.activeSelf ? 0 : Input.GetAxis("Horizontal");
+            float inputY = scriptManager.isAction || savePanel.activeSelf ? 0 : Input.GetAxis("Vertical");
             // -1 ~ 1
 
             float fallSpeed = rigid.velocity.y; // 떨어지는 속도 저장

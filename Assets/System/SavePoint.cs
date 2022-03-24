@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class SavePoint : MonoBehaviour
 {
-    public GameObject text;
+    public GameObject savingText;
+    public GameObject savePanel;
     public HardLight2D hardLight;
 
     public ScriptManager scriptManager;
     GameObject scanObject;
 
     public bool isActive = false;
+    public bool isSaving = false;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class SavePoint : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            text.SetActive(true);
+            savingText.SetActive(true);
             isActive = true;
         }
     }
@@ -31,7 +33,7 @@ public class SavePoint : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player") {
-            text.SetActive(false);
+            savingText.SetActive(false);
             isActive = false;
         }
     }
@@ -41,6 +43,15 @@ public class SavePoint : MonoBehaviour
     {
         if (isActive && Input.GetKeyDown(KeyCode.Space)){
             scriptManager.scriptPanel(scanObject);
+            if (!scriptManager.isAction) {
+                Save();
+            }
         }
+    }
+
+    public void Save() {
+        isSaving = true;
+        savePanel.SetActive(true);
+        
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ScriptManager : MonoBehaviour
 {
     public GameObject talkPanel;
+    public GameObject savePanel;
     public Text talkText;
     public GameObject scanObject;
     public bool isAction = false;
@@ -31,7 +32,7 @@ public class ScriptManager : MonoBehaviour
         {
             isAction = true;
             talkPanel.SetActive(true);
-            if (scanObj.name == "SavePoint")
+            if (scanObj.tag == "SavePoint") 
             {
                 talkText.text = "±â¾ïÀ» ¸Ô´Â ²ÉÀÌ¾ß.";
             }
