@@ -1,26 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SavePoint : MonoBehaviour
 {
     public GameObject text;
     public HardLight2D hardLight;
 
-    bool isActive = false;
+    public ScriptManager scriptManager;
+    GameObject scanObject;
+
+    public bool isActive = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        scanObject = this.gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player") {
+        if (collision.tag == "Player")
+        {
             text.SetActive(true);
+            isActive = true;
         }
-        isActive = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -35,7 +40,7 @@ public class SavePoint : MonoBehaviour
     void Update()
     {
         if (isActive && Input.GetKeyDown(KeyCode.Space)){
-            Debug.Log("저장이 완료되었습니다.");
+            scriptManager.scriptPanel(scanObject);
         }
     }
 }
