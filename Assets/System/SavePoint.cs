@@ -41,7 +41,7 @@ public class SavePoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isActive && Input.GetKeyDown(KeyCode.Space)){
+        if (!isSaving && isActive && Input.GetKeyDown(KeyCode.Space)){
             scriptManager.scriptPanel(scanObject);
             if (!scriptManager.isAction) {
                 Save();
@@ -52,6 +52,5 @@ public class SavePoint : MonoBehaviour
     public void Save() {
         isSaving = true;
         savePanel.SetActive(true);
-        
     }
 }
