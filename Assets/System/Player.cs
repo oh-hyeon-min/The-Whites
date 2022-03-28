@@ -81,11 +81,16 @@ public class Player : MonoBehaviour
             float fallSpeed = rigid.velocity.y; // 떨어지는 속도 저장
             if (inputX > 0)
             {
+                anim.SetBool("Walk", true);
                 transform.localScale = new Vector3(-1, 1, 1);
             }
             else if (inputX < 0)
             {
+                anim.SetBool("Walk", true);
                 transform.localScale = new Vector3(1, 1, 1);
+            }
+            else {
+                anim.SetBool("Walk", false);
             }
             Vector2 velocity = new Vector2(inputX, inputY);
             velocity *= speed;

@@ -53,4 +53,8 @@ public class SavePoint : MonoBehaviour
         isSaving = true;
         savePanel.SetActive(true);
     }
+
+    public void SaveOver() {
+        isSaving = false;
+    }
 }
