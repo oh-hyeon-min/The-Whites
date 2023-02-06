@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SavePointText : MonoBehaviour
 {
-
+    Text text;
     public float moveMax;
     public float speed;
 
